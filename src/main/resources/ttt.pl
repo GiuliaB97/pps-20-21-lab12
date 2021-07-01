@@ -12,13 +12,14 @@ ttt :- ttt('Human', 'X').
 ttt(Turn, Type) :-
     newboard(Board),
     printboard(Board),
-    progress(Board, Turn, Type, _), !. % don't go on to the next game
+    progress(Board, Turn, Type, _), !. % do not go on to the next game
 
-% progress is responsible for playing a single game of tic tac toe.
-%   It checks whether the game is over, and, if not, makes the next
-%   move happen.  It then calls itself recursively.  If at any time, 
-%   it detects that the game is over, it prints a message and quits.
-%
+%   progress is responsible for playing a single game of tic tac toe.
+%   It checks whether the game is over, and, if not, makes the next move happen.
+%   It then calls itself recursively.
+%   If at any time, it detects that the game is over,
+%   it prints a message and quits.
+
 progress(OldBoard, _, _, NewBoard) :-
     gameover(OldBoard), !,
     nl, print('Game is over.'), nl,
@@ -34,7 +35,7 @@ progress(OBoard, Turn, Type, NBoard) :-
     progress(TBoard, NTurn, NType, NBoard).
 
 % switch flips the state between Human and Machine and betwee X and O.
-%
+
 switch('X', 'O').
 switch('O', 'X').
 switch('Machine', 'Human').
