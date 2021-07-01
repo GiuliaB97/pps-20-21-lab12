@@ -2,11 +2,11 @@
 %   accepts new moves until the game is over.  When this happens, it
 %   prints a message and quits.  It can be invoke with or without
 %   arguments.  The first argument is either 'Machine' or 'Human'
-%   indicating who should go first.  The second argument is either
-%   'X' or 'O' indicating whether the first player should use either
-%   the 'X' or the 'O' symbol.  If ttt is invoked without arguments,
-%   the human goes first using 'X'.
-%
+%   indicating who should go first.
+%   The second argument is either 'X' or 'O' indicating whether
+%   the first player should use either the 'X' or the 'O' symbol.
+%   If ttt is invoked without arguments, the human goes first using 'X'.
+
 ttt :- ttt('Human', 'X').
 
 ttt(Turn, Type) :-
