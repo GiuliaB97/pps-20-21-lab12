@@ -1,10 +1,7 @@
 package it.unibo.u12lab.code
 
-import java.io.FileInputStream
-
-import alice._
 import alice.tuprolog.{Term, Theory}
-import Scala2P._
+import it.unibo.u12lab.code.Scala2P._
 
 /**
   * Created by mirko on 4/10/17.
@@ -41,19 +38,22 @@ class TicTacToeImpl(fileName: String) extends TicTacToe {
   }
 
   override def setComputerCell(): Array[Int] = {
-    // a solution which just seeks for the first freecell
-    val pos = (for {
+    // a solution which just seeks for the first free-cell
+    /*val pos = (for {
       i <- 0 to 2
       j <- 0 to 2
       if (isAFreeCell(i, j))
       k = i*3+j+1
     } yield k).head
+    */
     // change above, by calling predicate 'response'
+    val variable = "X"
+    val goal = s"board(B),response(B, 'O', $variable)"
+
+    val pos:Int = solveOneAndGetTerm(engine,goal,"X").toString.toInt
     setCell(pos,"'O'")
     Array((pos-1)/3,(pos-1)%3)
   }
 
-  override def toString: String =
-    solveOneAndGetTerm(engine,"board(B)","B").toString
-
+  override def toString: String = solveOneAndGetTerm(engine,"board(B)","B").toString
 }
